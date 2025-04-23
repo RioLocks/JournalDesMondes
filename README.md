@@ -2,6 +2,7 @@
 
 Journal des Mondes est une application introspective et poétique construite avec Tauri v2, React, Rust et SQLite. Elle agit comme un compagnon personnel pour explorer son monde intérieur à travers des journaux quotidiens, bilans émotionnels, citations inspirantes et outils d’analyse visuelle.
 
+https://github.com/user-attachments/assets/b2db4d6b-9701-4781-85bb-2656b77e22e9
 
 ## 🌟 Fonctionnalités principales
 
