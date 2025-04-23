@@ -1,0 +1,26 @@
+.tagcloud-wrapper {
+  margin-top: 1.5rem;
+  background: var(--surface);
+  border-radius: 16px;
+  box-shadow: var(--shadow-medium);
+  padding: 24px;
+  transition: transform 0.2s ease;
+}
+
+.tagcloud-wrapper:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.12);
+}
+
+.simple-cloud span {
+  margin-right: 8px;
+  display: inline-block;
+  cursor: pointer;
+  color: var(--text-accent);
+  transition: transform 0.2s ease;
+}
+
+.simple-cloud span:hover {
+  transform: translateY(-4px);
+  text-decoration: underline;
+}

@@ -1,0 +1,110 @@
+/* --------------- Style global ---------------- */
+.entry-card {
+  background: var(--surface);
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: var(--shadow-light);
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.entry-card:hover {
+  transform: scale(1.01);
+}
+
+/* --------------- Style du titre de la carte ---------------- */
+.entry-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.entry-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--text-accent);
+}
+
+.entry-mood-title{
+    font-weight: normal;
+    font-style: italic;
+}
+
+.entry-completion-badge {
+  font-size: 1.2rem;
+  margin-left: 0.5rem;
+  animation: pulse-badge 2s infinite;
+}
+
+@keyframes pulse-badge {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* --------------- Style du corps de la carte ---------------- */
+
+/* La citation */
+.entry-quote {
+  font-style: italic;
+  margin-top: 0.5rem;
+  color: var(--text-muted);
+}
+
+/* Les tags */
+.entry-tags-container {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.entry-tag {
+  background-color: var(--accent-light);
+  color: var(--text-accent);
+  padding: 0.3rem 0.6rem;
+  border-radius: 1rem;
+  font-size: 0.7rem;
+  font-style: italic;
+  font-weight: bold;
+}
+  
+
+/* --------------- Style des actions de la carte ---------------- */
+
+.entry-actions {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+.entry-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+}
+
+.entry-btn.delete {
+  color: crimson;
+}
+
+.entry-completed-icon {
+  color: var(--accent);
+}

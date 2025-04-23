@@ -1,0 +1,275 @@
+/* -------------------------------
+        Style global de la page
+--------------------------------- */
+
+.settings-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+
+/*  Style du container des différentes sections */
+.settings-content{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  gap: 20px;
+}
+
+/* Style de chaque section */
+
+.settings-item{
+  background-color: var(--accent-light);
+  border-radius: 10px;
+  padding: 0.7rem;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow-medium);
+}
+
+.settings-item-header {
+  height: 20%;
+}
+
+
+
+.settings-item-footer{
+  border-top: 1px solid var(--accent-dark);
+  height: 20%;
+  display: flex;
+  padding-top: 10px;
+  gap: 5px;
+}
+
+.settings-item-footer input {
+  width: 90%;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-light);
+}
+
+.settings-item-footer input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.settings-item-footer input:focus {
+  outline: none;
+  border-color: var(--accent-dark);
+  box-shadow: 0 0 0 2px rgba(126, 87, 194, 0.3); /* optionnel pour focus visible */
+}
+
+.settings-item-footer button {
+  flex: 1;
+  background-color: var(--accent);
+  border-radius: 5px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: var(--shadow-medium);
+}
+
+.settings-item-footer button:hover {
+  background-color: var(--accent-dark);
+}
+
+/* -------------------------------
+          Style des tags
+--------------------------------- */
+.settings-item-content{
+  height: 50%;
+  overflow: auto;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+/* Chaque tag en badge */
+.tag-item {
+  background-color: var(--background);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--accent-dark);
+  box-shadow: var(--shadow-light);
+  list-style: none;
+  display: flex;
+  gap: 5px;
+}
+
+/* Message si aucun tag */
+.no-tags-message {
+  font-style: italic;
+  color: var(--text-muted);
+  opacity: 0.8;
+  font-size: 0.9rem;
+}
+
+.tag-delete-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: red;
+  font-size: 0.8rem;
+  transition: color 0.3s ease;
+}
+
+.tag-delete-button:hover {
+  color: darkred;
+}
+
+
+/* -------------------------------
+          Style des citations
+--------------------------------- */
+
+.quote-container {
+  height: 300px;
+}
+
+.quote-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-quote-btn {
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  padding: 7px 17px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: var(--shadow-medium);
+}
+.add-quote-btn:hover {
+  background-color: var(--accent-dark);
+}
+
+.quote-footer select {
+  border-radius: 7px;
+  border: none;
+  box-shadow: var(--shadow-light);
+}
+
+.quote-footer select:focus {
+  outline: none;
+  border-color: var(--accent-dark);
+  box-shadow: 0 0 0 2px rgba(126, 87, 194, 0.3); /* optionnel pour focus visible */
+}
+
+/* Citations  */
+
+.quote-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+
+.quote-item{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: white;
+  border-radius: 10px;
+  gap: 5px;
+}
+
+.quote-item-top{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.quote-text{
+  display: flex;
+}
+
+.quote-item-bottom {
+  display: flex;
+}
+
+.quote-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.quote-tag {
+  background-color: var(--accent);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+/* Boutons d'action */
+
+.quote-actions{
+  display: flex;
+  gap: 5px;
+}
+
+.quote-actions button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.quote-favorite-button {
+  color: rgb(255, 213, 0);
+  transition: color 0.3s ease;
+}
+
+.quote-favorite-button:hover {
+  color: rgb(255, 174, 0);
+}
+
+.quote-delete-button {
+  color: red;
+  transition: color 0.3s ease;
+}
+
+.quote-delete-button:hover {
+  color: darkred;
+}
+
+/* PArtie des favoris dans le footer */
+
+.favorite-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: rgb(255, 213, 0);
+  transition: transform 0.2s ease;
+}
+
+.favorite-toggle:hover {
+  transform: scale(1.1);
+  color: rgb(255, 213, 0);
+}
+
+.favorite-icon {
+  pointer-events: none;
+}

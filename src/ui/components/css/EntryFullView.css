@@ -1,0 +1,191 @@
+.entry-full-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--accent-light);
+  padding: 2rem;
+  z-index: 1999;
+  overflow-y: auto;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: var(--text-accent);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.entry-full-title {
+  font-size: 1.8rem;
+  color: var(--text-main);
+  margin-bottom: 2rem;
+}
+
+.entry-section {
+  background: var(--surface);
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: var(--shadow-light);
+  margin-bottom: 1.5rem;
+}
+
+.entry-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.entry-section-header h3 {
+  font-size: 1.1rem;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.entry-section p {
+  color: var(--text-main);
+  margin: 0.5rem 0;
+}
+
+.entry-section textarea,
+.entry-section input[type="text"],
+.entry-section input[type="number"],
+.entry-section select {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border-color);
+  background: #fff;
+  font-size: 1rem;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+  resize: vertical;
+}
+
+.entry-section .edit-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 0.2rem;
+}
+
+.entry-section .edit-btn:hover {
+  color: var(--text-accent);
+}
+
+.entry-section .action-btn {
+  background: none;
+  border: none;
+  color: var(--text-accent);
+  cursor: pointer;
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.entry-section .action-btn:hover {
+  text-decoration: underline;
+}
+
+/* Objectifs : scoped à la section */
+.entry-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-left:20px;
+  margin-top: 15px;
+}
+
+.entry-section ul li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.goal-done {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+.entry-section ul li input[type="checkbox"] {
+  cursor: pointer;
+}
+
+.entry-section ul li span {
+  flex: 1;
+  color: var(--text-main);
+}
+
+.entry-section ul li input[type="text"] {
+  flex: 1;
+  padding: 0.3rem 0.6rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
+.entry-section ul li button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  padding: 0.2rem;
+  font-size: 0.9rem;
+}
+
+.entry-section ul li button:hover {
+  color: var(--text-accent);
+}
+
+/* -------------------------- Style de la section de la soirée --------------------------- */
+
+/* Mood de la soirée */
+.evening-mood-line {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.evening-mood-line select {
+  width: 150px;
+  margin: 0 10px;
+}
+
+.evening-mood-line input[type="number"] {
+  width: 100px;
+  margin: 0 10px;
+}
+
+
+/* Boutons d'actions  */
+.complete-evening-actions{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.complete-evening-btn{
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.complete-evening-btn:hover {
+  background-color: var(--accent-dark);
+}

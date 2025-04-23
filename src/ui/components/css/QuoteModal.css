@@ -1,0 +1,85 @@
+.quote-modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+
+/* ------------- Champs de saisie -------------------- */
+
+.quote-modal-item input[type="text"],
+.quote-modal-item input[type="date"],
+.quote-modal-item input[type="number"],
+.quote-modal-item select,
+.quote-modal-item textarea {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background: var(--background);
+  color: var(--text-main);
+  resize: none;
+}
+
+
+
+
+
+/* ------------- Liste des tags -------------------- */
+
+.quote-tag.removable {
+  cursor: pointer;
+  background-color: var(--accent-light);
+  border-radius: 16px;
+  padding: 4px 10px;
+  margin: 4px 6px 0 0;
+  display: inline-block;
+  transition: background-color 0.2s ease;
+}
+
+.quote-tag.removable:hover {
+  background-color: var(--accent-dark);
+  color: white;
+}
+
+/* ------------- Champs favorits -------------------- */
+.favorite-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .favorite-checkbox input[type="checkbox"] {
+    accent-color: var(--accent); /* pour un beau violet cohérent */
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+  
+
+
+/* ------------- Boutons d'action -------------------- */
+
+.quote-modal-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.quote-modal-actions button {
+    background-color: var(--accent);
+    color: var(--btn-text);
+    border: none;
+    padding: 0.4rem 0.6rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.quote-modal-actions button:hover {
+    background-color: var(--accent-dark);
+}
