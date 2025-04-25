@@ -110,7 +110,7 @@ const Review = () => {
       setShowAddModal(false);
     } catch (error) {
       console.error("Erreur lors de l'ajout du bilan :", error);
-      alert("Une erreur est survenue.");
+      alert("Une erreur est survenue : " + error);
     }
   };
 
@@ -122,7 +122,7 @@ const Review = () => {
       setSelectedReview(null);
     } catch (error) {
       console.error("Erreur lors de la suppression du bilan :", error);
-      alert("Impossible de supprimer le bilan.");
+      alert("Impossible de supprimer le bilan : " + error);
     }
   };
 
@@ -146,7 +146,7 @@ const Review = () => {
       setSelectedReview(null);
     } catch (error) {
       console.error("Erreur lors de la mise à jour du bilan :", error);
-      alert("Impossible de sauvegarder les modifications.");
+      alert("Impossible de sauvegarder les modifications : " + error);
     }
   };
 

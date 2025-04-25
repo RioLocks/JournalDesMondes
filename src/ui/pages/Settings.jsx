@@ -40,14 +40,21 @@ const Settings = () => {
   };
 
   const handleAddTag = async () => {
+    if (!newTag || newTag.trim() === "") {
+      alert("Merci d'entrer un nom pour le tag.");
+      return;
+    }
+  
     try {
-      await invoke('add_tag', { label: newTag });
+      await invoke('add_tag', { label: newTag.trim() });
       setNewTag('');
       fetchTags();
     } catch (error) {
-      console.error('Erreur lors de l\'ajout du tag :', error);
+      console.error("Erreur lors de l'ajout du tag :", error);
+      alert("Erreur lors de l'ajout du tag : " + error);
     }
   };
+  
 
   const deleteTag = async (tagId, label) => {
     const confirmDelete = window.confirm(`Supprimer le tag "${label}" ?`);

@@ -59,7 +59,6 @@ const Journal = () => {
     try {
       const tags = await invoke("get_tags");
       setAvailableTags(tags);
-      console.log("tags chargés :", tags); 
     } catch (error) {
       console.error("Erreur lors du chargement des tags :", error);
     }
@@ -69,6 +68,28 @@ const Journal = () => {
 
   // Ajout d'une entrée
   const addEntry = async () => {
+    // Vérification des champs essentiels
+    if (!date) {
+      alert("Merci de choisir une date pour ton entrée.");
+      return;
+    }
+  
+    if (!morningMood || morningMood.trim() === "") {
+      alert("Merci de sélectionner une humeur du matin.");
+      return;
+    }
+  
+    if (!morningMoodLevel || isNaN(morningMoodLevel)) {
+      alert("Merci d’indiquer une intensité pour ton humeur.");
+      return;
+    }
+  
+    if (!intentions || intentions.trim() === "") {
+      alert("Merci d’écrire une ou plusieurs intentions pour ta journée.");
+      return;
+    }
+  
+  
     try {
       await invoke("add_entry", {
         date,
@@ -81,8 +102,9 @@ const Journal = () => {
         linkedAt: [],
         attachments: [],
       });
-
+  
       setIsAddModalOpen(false);
+  
       // reset des champs après soumission
       setDate("");
       setMorningMood("");
@@ -93,17 +115,23 @@ const Journal = () => {
       setDailyGoals([]);
       setSelectedTag("");
       setNewGoal("");
+  
       fetchEntries();
     } catch (error) {
       console.error("Erreur lors de l'ajout :", error);
+      alert("Erreur lors de l'ajout : " + error);
     }
   };
+  
 
   // Suppression d'une entrée
   const handleDeleteEntry = async (id) => {
-    if (confirm("Supprimer cette entrée ?")) {
+    try {
       await invoke("delete_entry", { entryId: id });
-      fetchEntries(); // Recharge
+      fetchEntries();
+    } catch (error) {
+      console.error("Erreur lors de la suppression :", error);
+      alert("Erreur lors de la suppression : " + error);
     }
   };
   
@@ -224,6 +252,7 @@ const Journal = () => {
           entry={selectedEntry}
           onClose={() => setSelectedEntryId(null)}
           availableMoods={availableMoods}
+          fetchEntries={fetchEntries} 
         />
       ) : (
         <div className="entries-container">

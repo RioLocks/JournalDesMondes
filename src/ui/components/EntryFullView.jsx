@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faPen, faCheck, faTrash } from "@fortawesome/free-solid-svg-icons";
 import "./css/EntryFullView.css";
 
-const EntryFullView = ({ entry, onClose, availableMoods }) => {
+const EntryFullView = ({ entry, onClose, availableMoods, fetchEntries }) => {
   const [editingField, setEditingField] = useState(null);
   const [editingGoalIndex, setEditingGoalIndex] = useState(null);
   const [fieldValues, setFieldValues] = useState({});
@@ -15,7 +15,11 @@ const EntryFullView = ({ entry, onClose, availableMoods }) => {
 
 
   useEffect(() => {
-    setFieldValues({ ...entry });
+    const initialValues = {
+      ...entry,
+      evening_mood_level: entry.evening_mood_level ?? 5, // si undefined ou null, mets 5
+    };
+    setFieldValues(initialValues);
     setGoals(entry.daily_goals || []);
     setEveningCompleted(entry.is_evening_completed);
   
@@ -26,21 +30,38 @@ const EntryFullView = ({ entry, onClose, availableMoods }) => {
     }
   }, [entry]);
   
+  
 
   const handleUpdateField = async (field) => {
+    const value = fieldValues[field];
+  
+    if (!value || value.trim() === "") {
+      alert("Ce champ ne peut pas être vide.");
+      return;
+    }
+  
     try {
       await invoke("update_entry_field", {
         entryId: entry.id,
         field,
-        value: fieldValues[field],
+        value,
       });
       setEditingField(null);
     } catch (error) {
       console.error("Erreur mise à jour champ", error);
+      alert("Erreur mise à jour champ : " + error);
     }
   };
+  
 
   const handleGoalUpdate = async (updatedGoals) => {
+    const invalidGoal = updatedGoals.find((goal) => !goal.text || goal.text.trim() === "");
+  
+    if (invalidGoal) {
+      alert("Un objectif est vide. Merci de le compléter avant de valider.");
+      return;
+    }
+  
     try {
       await invoke("update_entry_goals", {
         entryId: entry.id,
@@ -50,31 +71,67 @@ const EntryFullView = ({ entry, onClose, availableMoods }) => {
       setEditingGoalIndex(null);
     } catch (error) {
       console.error("Erreur mise à jour objectifs", error);
+      alert("Erreur mise à jour objectifs : " + error);
     }
   };
+  
 
   const handleCompleteEvening = () => {
     setShowEveningForm(true);
   };
 
   const handleFinalizeEvening = async () => {
+    const { evening_mood, evening_mood_level, daily_review, learnings, gratitude_notes } = fieldValues;
+  
+    // Validation
+    if (!evening_mood || evening_mood.trim() === "") {
+      alert("Merci de choisir une humeur du soir.");
+      return;
+    }
+  
+    if (!evening_mood_level || isNaN(evening_mood_level)) {
+      alert("Merci d’indiquer un niveau d’intensité pour ton humeur.");
+      return;
+    }
+  
+    if (!daily_review || daily_review.trim() === "") {
+      alert("Merci de faire un petit bilan de ta journée.");
+      return;
+    }
+  
+    if (!learnings || learnings.trim() === "") {
+      alert("Partage au moins une chose que tu as apprise ou retenue.");
+      return;
+    }
+  
+    if (!gratitude_notes || gratitude_notes.trim() === "") {
+      alert("Note au moins une chose pour laquelle tu ressens de la gratitude.");
+      return;
+    }
+  
     try {
       await invoke("complete_evening_entry", {
         entryId: entry.id,
-        eveningMood: fieldValues.evening_mood,
-        eveningMoodLevel: parseInt(fieldValues.evening_mood_level),
-        dailyReview: fieldValues.daily_review,
-        learnings: fieldValues.learnings,
-        gratitudeNotes: fieldValues.gratitude_notes,
+        eveningMood: evening_mood,
+        eveningMoodLevel: parseInt(evening_mood_level),
+        dailyReview: daily_review,
+        learnings,
+        gratitudeNotes: gratitude_notes,
         isEveningCompleted: true,
       });
+  
+      await fetchEntries();
+  
       setShowEveningForm(false);
       setEveningCompleted(true);
       setEditingField(null);
     } catch (error) {
       console.error("Erreur lors de la complétion du soir", error);
+      alert("Erreur lors de la complétion du soir : " + error);
     }
   };
+  
+  
 
   const getEmojiForMood = (label) => {
     const mood = availableMoods.find((m) => m.label === label);
@@ -256,7 +313,7 @@ const EntryFullView = ({ entry, onClose, availableMoods }) => {
                 type="number"
                 min="1"
                 max="10"
-                value={fieldValues.evening_mood_level || 5}
+                value={fieldValues.evening_mood_level || parseInt(5)}
                 onChange={(e) =>
                   setFieldValues({ ...fieldValues, evening_mood_level: parseInt(e.target.value) })
                 }

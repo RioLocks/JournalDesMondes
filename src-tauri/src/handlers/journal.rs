@@ -151,7 +151,6 @@ pub fn delete_entry(state: State<AppState>, entry_id: i32) -> Result<(), String>
     Ok(())
 }
 
-// Compléter une entrée 
 #[tauri::command]
 pub fn complete_evening_entry(
     state: State<AppState>,
@@ -161,7 +160,7 @@ pub fn complete_evening_entry(
     daily_review: String,
     learnings: String,
     gratitude_notes: String,
-    is_evening_completed: Option<bool>,
+    is_evening_completed: bool,
 ) -> Result<(), String> {
     let db = state.db.lock().map_err(|_| "Erreur lors de l'accès à la base de données")?;
 
@@ -181,13 +180,14 @@ pub fn complete_evening_entry(
             daily_review,
             learnings,
             gratitude_notes,
-            is_evening_completed,
+            is_evening_completed, // <- on utilise bien la variable
             entry_id
         ],
     ).map_err(|e| e.to_string())?;
 
     Ok(())
 }
+
 
 
 
