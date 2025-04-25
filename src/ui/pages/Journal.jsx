@@ -93,6 +93,7 @@ const Journal = () => {
       setDailyGoals([]);
       setSelectedTag("");
       setNewGoal("");
+      fetchEntries();
     } catch (error) {
       console.error("Erreur lors de l'ajout :", error);
     }

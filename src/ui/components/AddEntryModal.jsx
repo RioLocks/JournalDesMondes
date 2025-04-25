@@ -76,7 +76,7 @@ const AddEntryModal = ({
           </div>
 
           <div className="add-modal-item">
-            <label>Ecris tes intentions : </label>
+            <label>Ecris tes pensées et intentions : </label>
             <textarea
               className="writing-field"
               placeholder={getRandomPlaceholder("intentions")}

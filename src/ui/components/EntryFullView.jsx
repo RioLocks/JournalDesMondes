@@ -113,7 +113,7 @@ const EntryFullView = ({ entry, onClose, availableMoods }) => {
       {/* Intentions */}
       <div className="entry-section entry-section-editable">
         <div className="entry-section-header">
-          <h3>🧭 Intentions</h3>
+          <h3>💭 Pensées et intentions</h3>
           {editingField !== "intentions" && (
             <button onClick={() => setEditingField("intentions")} className="edit-btn">
               <FontAwesomeIcon icon={faPen} />

@@ -46,7 +46,7 @@ const IntrospectiveDraw = ({ entries, reviews }) => {
           </div>
 
           <div className="modal-section">
-            <strong>🎯 Intentions :</strong>
+            <strong>💭 Pensées et intentions :</strong>
             <p>{selectedItem.intentions}</p>
           </div>
 
